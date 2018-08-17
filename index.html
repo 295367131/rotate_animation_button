@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>jQuery旋转展开按钮</title>
+        
+        <!--引入iconfont图标库-->
+        <link rel="stylesheet" href="//at.alicdn.com/t/font_796089_peum396m63p.css"/>
+        
+        <style type="text/css">
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body,html{
+                width: 100%;
+                height: 100%;
+                background: #efefef;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+            .line{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .nav-ct{
+                position: relative;
+                width: 80px;
+                height: 80px;
+                padding: 10px;
+                background: #ffffff;
+                border-radius: 10px;
+                box-shadow: 0 5px 10px rgba(0,0,0,.2);
+                display: flex;
+                justify-content: space-between;
+                margin: 10px;
+            }
+            .nav-ct .nav-item{
+                flex: 1;
+                height: 60px;
+                line-height: 60px;
+                text-align: center;
+                color: #333;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            
+            /*主要CSS部分*/
+            .btn{
+                position: relative;
+                border: none;
+                background: none;
+                outline: none;
+                width: 50px;
+                height: 50px;
+                z-index: 1;
+                border-radius: 25px;
+                transition: all .25s;
+            }
+            .btn:hover{
+                background: #f6f6f6;
+            }
+            .btn.on{
+                position: relative;
+                z-index: 3;
+                background: #1296db;
+                box-shadow: 2px 4px 8px rgba(0,0,0,.3);
+            }
+            .btn.on .btn-center{
+                color: #fff;
+            }
+            .btn i{
+                font-size: 24px;
+            }
+            .btn .btn-center{
+                position: relative;
+                width: 50px;
+                height: 50px;
+                border-radius: 25px;
+                z-index: 3;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .btn .btn-item{
+                position: absolute;
+                bottom: 0;
+                width: 50px;
+                height: 50px;
+                z-index: 2;
+                display: none;
+                opacity: 0;
+            }
+
+            .btn .btn-item.transition span{
+                transition: all .5s;
+            }
+            .btn .btn-item i{
+                font-size: 30px;
+            }
+            .btn .btn-item i.icon-file_word{
+                color: #1296db;
+            }
+            .btn .btn-item span{
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                border-radius: 25px;
+                background: #ffffff;
+                color: #333;
+                box-shadow: 2px 4px 8px rgba(0,0,0,.3);
+            }
+            /*主要CSS部分*/
+            
+        </style>
+    </head>
+    <body>
+        <div class="line">
+            <div class="nav-ct">
+                <div class="nav-item">
+                    <button class="btn btn1">
+                        <div class="btn-center"><i class="iconfont icon-faxian"></i></div>
+                        <div class="btn-item"><span><i class="iconfont icon-wenda"></i></span></div>
+                        <div class="btn-item"><span><i class="iconfont icon-neirong2"></i></span></div>
+                        <div class="btn-item"><span><i class="iconfont icon-tupian"></i></span></div>
+                        <div class="btn-item"><span><i class="iconfont icon-huodongxiangqu"></i></span></div>
+                        <div class="btn-item"><span><i class="iconfont icon-paizhao"></i></span></div>
+                        <div class="btn-item"><span><i class="iconfont icon-xiaoxi"></i></span></div>
+                    </button>
+                </div>
+            </div>
+            <div class="nav-ct">
+                <div class="nav-item">
+                    <button class="btn btn2">
+                        <div class="btn-center"><i class="iconfont icon-faxian"></i></div>
+                        <div class="btn-item"><span><i class="iconfont icon-wenda"></i></span></div>
+                        <div class="btn-item"><span><i class="iconfont icon-neirong2"></i></span></div>
+                        <div class="btn-item"><span><i class="iconfont icon-tupian"></i></span></div>
+                        <div class="btn-item"><span><i class="iconfont icon-huodongxiangqu"></i></span></div>
+                        <div class="btn-item"><span><i class="iconfont icon-paizhao"></i></span></div>
+                        <div class="btn-item"><span><i class="iconfont icon-xiaoxi"></i></span></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="line">
+            <div class="nav-ct">
+                <div class="nav-item">
+                    <button class="btn btn3">
+                        <div class="btn-center"><i class="iconfont icon-faxian"></i></div>
+                        <div class="btn-item"><span><i class="iconfont icon-wenda"></i></span></div>
+                        <div class="btn-item"><span><i class="iconfont icon-neirong2"></i></span></div>
+                        <div class="btn-item"><span><i class="iconfont icon-tupian"></i></span></div>
+                        <div class="btn-item"><span><i class="iconfont icon-huodongxiangqu"></i></span></div>
+                    </button>
+                </div>
+            </div>
+        <div class="nav-ct">
+                <div class="nav-item">
+                    <button class="btn btn4">
+                        <div class="btn-center"><i class="iconfont icon-faxian"></i></div>
+                        <div class="btn-item"><span><i class="iconfont icon-wenda"></i></span></div>
+                        <div class="btn-item"><span><i class="iconfont icon-neirong2"></i></span></div>
+                        <div class="btn-item"><span><i class="iconfont icon-tupian"></i></span></div>
+                        <div class="btn-item"><span><i class="iconfont icon-huodongxiangqu"></i></span></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="./index.js"></script>
+        <script>
+            $('.btn1').loadBtn();
+            $('.btn2,.btn3').loadBtn({
+                degFd: 30,              //按钮间角度
+                btnItemHeight: 180,     //按钮距中心距离
+                degPy: -180,            //起始点角度
+            });
+            $('.btn4').loadBtn({
+                type: 1,                //动画类型（0或1）
+                time: 1000,             //动画总时长
+                degPy: 90             //起始点角度
+            })
+        </script>
+    </body>
+</html>
